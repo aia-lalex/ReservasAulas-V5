@@ -25,6 +25,10 @@ public class PermanenciaPorHora extends Permanencia implements Serializable {
 		super(permanencia);
 		setHora(permanencia.getHora());
 	}
+	public PermanenciaPorHora(LocalDate dia, String value) {
+		super(dia);
+		setHora(hora);
+	}
 	// muestra hora
 	public LocalTime getHora() {
 		return hora;

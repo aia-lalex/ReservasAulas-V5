@@ -2,29 +2,35 @@ package org.iesalandalus.programacion.reservasaulas.mvc.modelo;
 import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
-import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
-import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Permanencia;
-import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
-import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
+
+import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.*;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.IAulas;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.IProfesores;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.IReservas;
+import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.ficheros.Aulas;
+import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.ficheros.Profesores;
+import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.ficheros.Reservas;
 
 
 public class Modelo implements IModelo{
 
 
+
 	private IProfesores profesores;
 	private IAulas aulas;
 	private IReservas reservas;
-	
+	/*
 	public Modelo(IFuenteDatos fuenteDatos) {
 		profesores = fuenteDatos.crearProfesores();
 		aulas = fuenteDatos.crearAulas();
 		reservas = fuenteDatos.crearReservas();
+	}*/
+	
+	public Modelo() {
+		reservas = new Reservas();
+		aulas = new Aulas();
+		profesores = new Profesores();
 	}
-	
-	
 	@Override
 	public void comenzar() {
 		profesores.comenzar();

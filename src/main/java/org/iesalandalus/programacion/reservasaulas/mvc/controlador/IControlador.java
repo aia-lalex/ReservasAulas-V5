@@ -23,6 +23,10 @@ public interface IControlador {
 	public void borrarAula(Aula aula) throws OperationNotSupportedException;
 
 	public void borrarProfesor(Profesor profesor) throws OperationNotSupportedException;
+	
+	public List<Aula> getAulas();
+	
+	public 	List<Profesor> getProfesores();
 
 	public Aula buscarAula(Aula aula);
 
@@ -37,6 +41,8 @@ public interface IControlador {
 	public void realizarReserva(Reserva reserva) throws OperationNotSupportedException;
 	
 	public void anularReserva(Reserva reserva) throws OperationNotSupportedException;
+	
+	public List<Reserva> getReservas();
 	
 	public List<Reserva> getReservasAula(Aula aula);
 	
