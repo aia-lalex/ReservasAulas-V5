@@ -132,13 +132,18 @@ public class Consola {
 	public static LocalDate leerDia() {
 		LocalDate dia = null;
 		String cadenaFormato = "dd/MM/yyyy";
-		System.out.printf("Introduce el día (%s): ", cadenaFormato);
-		String diaLeido = Entrada.cadena();
-		try {
-			dia = LocalDate.parse(diaLeido, FORMATO_DIA);
-		} catch (DateTimeParseException e) {
-			System.out.println("ERROR: El formato del día no es correcto.");
-		}
+		boolean centinela = true;
+		do {
+			System.out.printf("Introduce el día (%s): ", cadenaFormato);
+			String diaLeido = Entrada.cadena();
+			try {
+				dia = LocalDate.parse(diaLeido, FORMATO_DIA);
+				centinela = false;
+			} catch (DateTimeParseException e) {
+				System.out.println("ERROR: El formato del día no es correcto.");
+			}
+		} while (centinela);
+		
 		return dia;
 	}
 		// elige permanencia
