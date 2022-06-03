@@ -19,12 +19,12 @@ public class Modelo implements IModelo{
 	private IProfesores profesores;
 	private IAulas aulas;
 	private IReservas reservas;
-	/*
+	
 	public Modelo(IFuenteDatos fuenteDatos) {
 		profesores = fuenteDatos.crearProfesores();
 		aulas = fuenteDatos.crearAulas();
 		reservas = fuenteDatos.crearReservas();
-	}*/
+	}
 	
 	public Modelo() {
 		reservas = new Reservas();

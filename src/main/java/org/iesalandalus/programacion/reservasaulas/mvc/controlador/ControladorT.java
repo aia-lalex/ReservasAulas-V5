@@ -4,27 +4,32 @@ import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
+
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.IModelo;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Permanencia;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
 import org.iesalandalus.programacion.reservasaulas.mvc.vista.iutextual.*;
-import org.iesalandalus.programacion.reservasaulas.mvc.vista.*;
-import org.iesalandalus.programacion.reservasaulas.mvc.vista.IVistaReservasAulas;
 
-public class Controlador implements IControlador {
 
-	private IVistaReservasAulas vista;
+public class ControladorT implements IControlador {
+
+	private IVista vista;
 	private IModelo modelo;
-
-	
-	public Controlador(IModelo modelo, IVistaReservasAulas vista) {
+	// constructor por defecto
+	public ControladorT(IModelo modelo, IVista vista) {
+		if (modelo == null) {
+			throw new NullPointerException("ERROR: El modelo no	puede ser nulo.");
+		}
+		if (vista == null) {
+			throw new NullPointerException("ERROR: La vista no puede ser nula.");
+		}
 		this.modelo = modelo;
 		this.vista = vista;
 		this.vista.setControlador(this);
-	}
 
+	}
 	// Comenzar en modelo y vista
 	@Override
 	public void comenzar() {
@@ -89,14 +94,17 @@ public class Controlador implements IControlador {
 	}
 	@Override
 	public List<Aula> getAulas() {
-		return modelo.getAulas();
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
 	public List<Profesor> getProfesores() {
-		return modelo.getProfesores();
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
-	public List<Reserva> getReservas(){
-		return modelo.getReservas();		
+	public List<Reserva> getReservas() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -167,7 +167,7 @@ public class ControladorVentanaPrincipal {
 			return nombre.startsWith(nv.toLowerCase());
 		}));
 		
-		//Aulas
+		// Aulas
 		
 		tcNombreAula.setCellValueFactory( aula -> new SimpleStringProperty(aula.getValue().getNombre()));
 		tcPuestosAula.setCellValueFactory( aula -> new SimpleStringProperty(Integer.toString(aula.getValue().getPuestos())));
@@ -217,34 +217,9 @@ public class ControladorVentanaPrincipal {
 			return ((PermanenciaPorHora) reserva.getPermanencia()).getHora().toString();
 		}
 	}
-	/*
-	@FXML	private void comprobarTabSeleccionada() {
-		if (tabReservas.isSelected()) {
-			btAnadirReserva.setDisable(false);
-			btBorrarReserva.setDisable(false);
-			btAnadirProfesor.setDisable(true);
-			btBorrarProfesor.setDisable(true);
-			btAnadirAula.setDisable(true);
-			btBorrarAula.setDisable(true);
-			
-		} else if (tabProfesores.isSelected()) {
-			btAnadirReserva.setDisable(true);
-			btBorrarReserva.setDisable(true);
-			btAnadirProfesor.setDisable(false);
-			btBorrarProfesor.setDisable(false);
-			btAnadirAula.setDisable(true);
-			btBorrarAula.setDisable(true);
-		} else {
-			btAnadirReserva.setDisable(true);
-			btBorrarReserva.setDisable(true);
-			btAnadirProfesor.setDisable(true);
-			btBorrarProfesor.setDisable(true);
-			btAnadirAula.setDisable(false);
-			btBorrarAula.setDisable(false);
-		}
-	}*/
+
+	// Menu Reservas
 	
-	/* Menu Reservas */
 	@FXML	private void anadirReserva(ActionEvent event) throws IOException {
 		crearAnadirReserva();
 		anadirReserva.showAndWait();
@@ -268,12 +243,12 @@ public class ControladorVentanaPrincipal {
 		try {
 			reserva = tvTablaReservas.getSelectionModel().getSelectedItem();
 			if (reserva == null) {
-				Dialogos.mostrarDialogoInformacion("Anular reserva", "Selecciona primero la reserva a anular.");
+				Dialogos.mostrarDialogoInformacion("Anular reserva", "Selecciona la reserva a anular.");
 			}
-			if (reserva != null && Dialogos.mostrarDialogoConfirmacion("Anular reserva", "¿Está seguro de que desea anular la reserva?", null)) {
+			if (reserva != null && Dialogos.mostrarDialogoConfirmacion("Anular reserva", "¿Desea anular la reserva?", null)) {
 				controladorMVC.anularReserva(reserva);;
 				reservas.remove(reserva);
-				Dialogos.mostrarDialogoInformacion("Anular reserva", "Aula anulada con éxito.");
+				Dialogos.mostrarDialogoInformacion("Anular reserva", "La reserva se ha borrado con éxito.");
 			}
 		} catch (Exception e) {
 			Dialogos.mostrarDialogoError("Anular reserva", e.getMessage());
@@ -306,12 +281,12 @@ public class ControladorVentanaPrincipal {
 		try {
 			profesor = tvTablaProfesores.getSelectionModel().getSelectedItem();
 			if (profesor == null) {
-				Dialogos.mostrarDialogoInformacion("Borrar profesor", "Selecciona primero el profesor a borrar.");
+				Dialogos.mostrarDialogoInformacion("Borrar profesor", "Selecciona el profesor a borrar.");
 			}
-			if (profesor != null && Dialogos.mostrarDialogoConfirmacion("Borrar profesor", "¿Está seguro de que desea borrar el profesor?", null)) {
+			if (profesor != null && Dialogos.mostrarDialogoConfirmacion("Borrar profesor", "¿Desea borrar el profesor?", null)) {
 				controladorMVC.borrarProfesor(profesor);
 				profesores.remove(profesor);
-				Dialogos.mostrarDialogoInformacion("Borrar profesor", "Profesor borrado con éxito.");
+				Dialogos.mostrarDialogoInformacion("Borrar profesor", "El profesor se ha borrado con éxito.");
 			}
 		} catch (Exception e) {
 			Dialogos.mostrarDialogoError("Borrar profesor", e.getMessage());
@@ -344,12 +319,12 @@ public class ControladorVentanaPrincipal {
 		try {
 			aula = tvTablaAulas.getSelectionModel().getSelectedItem();
 			if (aula == null) {
-				Dialogos.mostrarDialogoInformacion("Borrar aula", "Selecciona primero el aula a borrar.");
+				Dialogos.mostrarDialogoInformacion("Borrar aula", "Selecciona el aula a borrar.");
 			}
-			if (aula != null && Dialogos.mostrarDialogoConfirmacion("Borrar aula", "¿Está seguro de que desea borrar el aula?", null)) {
+			if (aula != null && Dialogos.mostrarDialogoConfirmacion("Borrar aula", "¿Desea borrar el aula?", null)) {
 				controladorMVC.borrarAula(aula);
 				aulas.remove(aula);
-				Dialogos.mostrarDialogoInformacion("Borrar aula", "Aula borrada con éxito.");
+				Dialogos.mostrarDialogoInformacion("Borrar aula", "El aula se ha borrado con éxito.");
 			}
 		} catch (Exception e) {
 			Dialogos.mostrarDialogoError("Borrar aula", e.getMessage());
@@ -358,7 +333,7 @@ public class ControladorVentanaPrincipal {
 	
 	/* Menu Barra Superior */
 	@FXML	private void confirmarSalida(ActionEvent event) {
-		if (Dialogos.mostrarDialogoConfirmacion("Salir", "¿Cerrar la aplicación?" , null)) {
+		if (Dialogos.mostrarDialogoConfirmacion("Exit", "¿Deeseas salir la aplicación?" , null)) {
 			controladorMVC.terminar();
 			System.exit(0);
 		} else {
@@ -373,12 +348,12 @@ public class ControladorVentanaPrincipal {
 		panelDialogo.lookupButton(ButtonType.OK).setId("btAceptar");
 		VBox contenido = new VBox();
 		contenido.setAlignment(Pos.CENTER);
-		contenido.setPadding(new Insets(20,20,0,20));
+		contenido.setPadding(new Insets(25,25,25,25));
 		contenido.setSpacing(20);
 		Image logo = new Image(getClass().getResourceAsStream("/org/iesalandalus/programacion/reservasaulas/mvc/vista/iugpestanas/recursos/imagenes/logo.png"), 200, 200, true, true);
 		Label titulo = new Label("ReservasAulas-V4");
 		Label texto = new Label("Alejandro Hurtado Navarro");
-		texto.setStyle("-fx-font: 22 tahoma");
+		texto.setStyle("-fx-font: 30 arial");
 		contenido.getChildren().addAll(new ImageView(logo),titulo,texto);
 		panelDialogo.setHeader(contenido);
 		dialogo.showAndWait();

@@ -34,6 +34,7 @@ public abstract class Permanencia implements Serializable {
 		if (dia == null) {
 			throw new NullPointerException("ERROR: El día de una permanencia no puede ser nulo.");
 		}
+
 		this.dia = dia;
 	}
 
